@@ -1,0 +1,6 @@
+name: 'Create Deployment for Public API'
+description: Creates and deploys configuration for the public api.
+author: Trace Baxter
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

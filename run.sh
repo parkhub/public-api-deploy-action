@@ -17,20 +17,19 @@ git config --global hub.protocol "https"
 git config --global url."https://${USERNAME}:${TOKEN}@github.com".insteadOf "https://github.com"
 git config --global user.email "${EMAIL}"
 git config --global user.name "${USER}"
-
+ls
 echo "Initialize GIT"
 git init
-
+echo pwd
 echo "Cloning repo ${REPO}"
 git clone https://github.com/${REPO}.git 
-
+echo pwd
 echo "Adding remote for repo ${REPO}"
 git remote add origin https://github.com/${REPO}.git
 
-echo "Checking out Master branch"
+echo "Checking out branch"
 git fetch
-git checkout origin/master
-git checkout -b master
+git checkout $GITHUB_REF
 
 echo "Deploying Gateway"
 serverless config credentials --provider aws --key "${AWS_ACCESS_KEY}" --secret "${AWS_SECRET_ACCESS_KEY}"

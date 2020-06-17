@@ -20,17 +20,18 @@ git config --global user.name "${USER}"
 ls
 echo "Initialize GIT"
 git init
-echo pwd
+pwd
 echo "Cloning repo ${REPO}"
 git clone https://github.com/${REPO}.git 
-echo pwd
+pwd
 echo "Adding remote for repo ${REPO}"
 git remote add origin https://github.com/${REPO}.git
 
 echo "Checking out branch"
+echo EXTRACT_GITHUB_REF=${GITHUB_REF##*/}
 git fetch
-git checkout $GITHUB_REF
+git checkout ${GITHUB_REF##*/}
 
 echo "Deploying Gateway"
 serverless config credentials --provider aws --key "${AWS_ACCESS_KEY}" --secret "${AWS_SECRET_ACCESS_KEY}"
-sls --msg "${GITHUB_REF}-${GITHUB_SHA}" --stage "${GITHUB_REF}" --debug
+sls --msg "${GITHUB_REF}-${GITHUB_SHA}" --stage ${GITHUB_REF##*/} --debug

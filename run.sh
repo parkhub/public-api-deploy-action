@@ -32,10 +32,14 @@ echo EXTRACT_GITHUB_REF=${GITHUB_REF##*/}
 git fetch
 git checkout ${GITHUB_REF##*/}
 
-echo "setup npmrc"
-touch .npmrc
-echo "//registry.npmjs.org/:_authToken=\${NPM_AUTH_TOKEN}" > .npmrc
-cat .npmrc
+# echo "setup npmrc"
+# touch .npmrc
+# echo "//registry.npmjs.org/:_authToken=\${NPM_AUTH_TOKEN}" > .npmrc
+# cat .npmrc
+
+echo "manually set registry"
+npm set registry "http://registry.npmjs.org"
+npm set //registry.npmjs.org/:_authToken $NPM_AUTH_TOKEN
 
 echo "Deploying Gateway"
 serverless config credentials --provider aws --key "${AWS_ACCESS_KEY}" --secret "${AWS_SECRET_ACCESS_KEY}"

@@ -3,7 +3,6 @@
 echo "Environment Variables"
 echo "REPO: ${REPO}"
 echo "USERNAME: ${USERNAME}"
-echo "TOKEN: ${TOKEN}"
 
 if [ "${GITHUB_REF}" = "master" ]
 then
@@ -12,8 +11,6 @@ fi
 
 echo "GITHUB_REF: ${GITHUB_REF}"
 echo "GITHUB_SHA: ${GITHUB_SHA}"
-echo "AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}"
-echo "AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}"
 
 echo "Configuring git"
 git config --global hub.protocol "https"

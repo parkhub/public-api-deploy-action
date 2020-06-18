@@ -5,4 +5,4 @@ RUN apk add --update git
 
 RUN npm install --global serverless@1.71.3
 
-ENTRYPOINT ["serverless"]
+ENTRYPOINT ["serverless", "$@"]

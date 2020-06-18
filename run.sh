@@ -4,7 +4,7 @@
 npm i @parkhub/aws-api-gateway @parkhub/config
 
 echo ">>> Running sls $@"
-ls -al node_modules
+
 sls $@
-ls -al node_modules
+
 echo ">>> Compleated"

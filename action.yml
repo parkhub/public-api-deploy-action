@@ -1,16 +1,21 @@
 name: 'Create Deployment for Public API'
 description: Runs serverless commands.
 author: Trace Baxter
-inputs:
-  args:
-    description: arguments for sls command
-    required: true
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.args }}
-branding:
-  icon: 'arrow-up-right' 
-  color: orange
+inputs:
+  msg:
+    description: msg to show in deployment description
+    required: true
+  stage:
+    description: api stage to deploy to
+    required: false
+    default: dev
+  debug:
+    description: verbosity of deploy script
+    required: false
+    default: 'true'

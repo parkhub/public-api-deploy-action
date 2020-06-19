@@ -5,4 +5,5 @@ RUN apk add --update git
 
 RUN npm install --global serverless@1.71.3
 
-ENTRYPOINT ["serverless"]
+ENTRYPOINT  serverless --msg "$INPUT_MSG" --stage "$INPUT_STAGE" --debug INPUT_DEBUG
+# ENTRYPOINT ["serverless", "--msg", ]
